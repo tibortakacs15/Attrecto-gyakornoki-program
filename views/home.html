@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="mb-2"></div>
+      <button id="fetch-users" class="btn btn-primary">
+        Felhasznalok lekérdezése
+      </button>
+      <div id="user-list-component"></div>
+      <form id="create-user">
+        <label>
+          Felhasznalo:
+          <input type="text" name="user_name" class="form-control" />
+        </label>
+        <button type="submit" class="btn btn-primary btn-sm">
+          +
+        </button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

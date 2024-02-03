@@ -1,15 +1,35 @@
 const express = require('express');
 const app = express();
+const fs = require('fs');
+const bodyParser = require("body-parser");
+
+app.use(express.static("public"));
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/views/home.html');
+});
 
 // Read
-app.get('/', (req, res) => {
-    res.send('GET /')
-});
+app.get("/users", (req, res) => {
+    fs.readFile("./data/users.json", (err, file) => {
+      res.send(JSON.parse(file));
+    });
+  });
 
 // Create
-app.post('/users', (req, res) => {
-    res.send('POST /users')
-});
+app.post("/users", bodyParser.json(), (req, res) => {
+    const newUser = {
+      user_name: req.body.user_name
+    };
+  
+    fs.readFile("./data/users.json", (err, file) => {
+      const users = JSON.parse(file);
+      users.push(newUser);
+      fs.writeFile("./data/users.json", JSON.stringify(users), (err) => {
+        res.send(newUser);
+      });
+    });
+  });
 
 // Update
 app.put('/users/:identifier', (req, res) => {
